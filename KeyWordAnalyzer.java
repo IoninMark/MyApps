@@ -3,6 +3,6 @@
  */
 public abstract class KeyWordAnalyzer {
 
-    abstract String getKeywords();
+    abstract String[] getKeywords();
     abstract Label getLabel();
 }

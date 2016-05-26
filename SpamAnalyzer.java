@@ -3,14 +3,14 @@
  */
 public class SpamAnalyzer extends KeyWordAnalyzer implements TextAnalyzer {
 
-    private String keywords = "sex,drugs,rock'n'roll";
+    private String[] keywords;
 
-    public SpamAnalyzer(String keywords) {
+    public SpamAnalyzer(String[] keywords) {
         this.keywords = keywords;
     }
 
     @Override
-    String getKeywords() {
+    String[] getKeywords() {
         return keywords;
     }
 
@@ -21,11 +21,9 @@ public class SpamAnalyzer extends KeyWordAnalyzer implements TextAnalyzer {
 
     @Override
     public Label processText(String text) {
-
-        for (String keyword : getKeywords().split(",")){
-            if (text.contains(keyword)) return getLabel();
-            else return Label.OK;
-        }
-        return null;
+        for (int i = 0; i < getKeywords().length; i++) {
+            if (text.contains(getKeywords()[i])) return getLabel();
+          }
+        return Label.OK;
     }
 }

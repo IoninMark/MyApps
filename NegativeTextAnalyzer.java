@@ -4,8 +4,8 @@
 public class NegativeTextAnalyzer extends KeyWordAnalyzer implements TextAnalyzer{
 
     @Override
-    String getKeywords() {
-        return ":(,=(,:|";
+    String[] getKeywords() {
+        return new String[]{":(","=(",":|"};
     }
 
     @Override
@@ -14,12 +14,10 @@ public class NegativeTextAnalyzer extends KeyWordAnalyzer implements TextAnalyze
     }
     @Override
     public Label processText(String text) {
-
-        for (String smile : getKeywords().split(",")){
-            if (text.contains(smile)) return getLabel();
-            else return Label.OK;
+        for (int i = 0; i < getKeywords().length; i++) {
+            if (text.contains(getKeywords()[i])) return getLabel();
         }
 
-        return null;
+        return Label.OK;
     }
 }
