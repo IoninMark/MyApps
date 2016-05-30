@@ -19,11 +19,4 @@ public class SpamAnalyzer extends KeyWordAnalyzer implements TextAnalyzer {
         return Label.SPAM;
     }
 
-    @Override
-    public Label processText(String text) {
-        for (int i = 0; i < getKeywords().length; i++) {
-            if (text.contains(getKeywords()[i])) return getLabel();
-          }
-        return Label.OK;
-    }
 }
